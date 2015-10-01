@@ -1,0 +1,39 @@
+<html ng-app="myApp">
+<h1>Home#index</h1>
+    <head>
+    <script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+	<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script> -->
+      
+    <script>
+    myApp=angular.module('myApp',[]);
+    myApp.controller('myController', ['$scope', '$http', function($scope,$http){
+  $scope.clickButton = function() {
+    $http.get('data0.json').success(function(response) {
+        $scope.items = response;
+	
+      });
+  }
+  
+}]);
+
+    </script>
+    </head>
+    <body ng-controller="myController">
+         <div ng-app="myApp">
+        <div ng-controller="myController">
+          <button ng-click='clickButton()'>Load JSON Data</button>
+        
+    
+	<table>
+  <tr ng-repeat="a in items">
+    <td>{{ a.x }} , </td>
+    <td> {{ a.y }}</td> 
+  </tr>
+</table>
+</div>
+    </div>
+	
+
+
+    </body>
+</html> 

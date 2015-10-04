@@ -1,5 +1,6 @@
 <html ng-app="myApp">
 <h1>Home#index on Rails</h1>
+<h4>Google Maps implementation </h4>
 <style>
 #map {
     height:420px;

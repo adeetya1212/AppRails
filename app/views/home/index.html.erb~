@@ -1,5 +1,5 @@
 <html ng-app="myApp">
-<h1>Home#index on Rails</h1>
+<h1>Webpage on Rails</h1>
 <h4>Google Maps implementation </h4>
 <style>
 #map {
@@ -27,73 +27,67 @@ h2 {
 
     myApp=angular.module('myApp',[]);
     myApp.controller('myController', ['$scope', '$http', function($scope,$http){
-  $scope.clickButton = function() {
-    $http.get('data.json').success(function(response) {
-        $scope.items = response;
-	console.log(response[0]);
+    $scope.clickButton = function()
+    {
+            $http.get('data.json').success(function(response) {
+            $scope.items = response;
+	        console.log(response[0]);
 	
- 	for (i = 0; i < response.length; i++){
-        createMarker(response[i]);
-    }
-      });
+ 	        for (i = 0; i < response.length; i++)
+            {
+                createMarker(response[i]);
+            }
+            });
 
-	var mapOptions = {
+	    var mapOptions = {
         zoom: 4,
         center: new google.maps.LatLng(40.0000, -98.0000),
         mapTypeId: google.maps.MapTypeId.TERRAIN
-    }
+        }   
 	
 
-    $scope.map = new google.maps.Map(document.getElementById('map'), mapOptions);
+        $scope.map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
-    $scope.markers = [];
+        $scope.markers = [];
     
-    var infoWindow = new google.maps.InfoWindow();
+        var infoWindow = new google.maps.InfoWindow();
 	
-	 var createMarker = function (info){
+	    var createMarker = function (info){
         
         var marker = new google.maps.Marker({
             map: $scope.map,
             position: new google.maps.LatLng(info.lat, info.long)
         });
         
-      }  
+    }  
     
 
        
     
     }
-
-
-
-  
 }]);
 
     </script>
     </head>
     <body ng-controller="myController">
-         <div ng-app="myApp">
+        <div ng-app="myApp">
         <div ng-controller="myController">
-          <button ng-click='clickButton()'>Load JSON Data</button>
+        <button ng-click='clickButton()'>Load JSON Data and Google Map</button>
         
     
 	<table>
   	<tr ng-repeat="states in items">
 	
-    	<td>{{states.state}} </td>
+    <td>{{states.state}} </td>
    	<td> {{states.lat}}  </td>
 	<td> {{states.long}} </td>
 		
 	</tr>    
-</table>
+    </table>
 
 
 <div id="map"></div>
-    <div id="class" ng-repeat="marker in markers | orderBy : 'title'">
-         <a href="#" ng-click="openInfoWindow($event, marker)">{{marker.title}}</a>
-    </div>
-
-
-    </body>
+  
+</body>
 </html> 
 

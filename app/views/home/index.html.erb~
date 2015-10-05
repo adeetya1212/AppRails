@@ -23,12 +23,18 @@ h2 {
 	<script src="dist/ng-map.min.js"></script>
       
     <script>
+
+
     myApp=angular.module('myApp',[]);
     myApp.controller('myController', ['$scope', '$http', function($scope,$http){
   $scope.clickButton = function() {
-    $http.get('data0.json').success(function(response) {
+    $http.get('data.json').success(function(response) {
         $scope.items = response;
+	console.log(response[0]);
 	
+ 	for (i = 0; i < response.length; i++){
+        createMarker(response[i]);
+    }
       });
 
 	var mapOptions = {
@@ -43,10 +49,19 @@ h2 {
     $scope.markers = [];
     
     var infoWindow = new google.maps.InfoWindow();
-
+	
+	 var createMarker = function (info){
         
+        var marker = new google.maps.Marker({
+            map: $scope.map,
+            position: new google.maps.LatLng(info.lat, info.long)
+        });
+        
+      }  
+    
 
-
+       
+    
     }
 
 

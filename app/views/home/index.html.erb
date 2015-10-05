@@ -78,21 +78,16 @@ h2 {
 	<table>
   	<tr ng-repeat="states in items">
 	
-    	<td>{{states.state}} </td>
+    <td>{{states.state}} </td>
    	<td> {{states.lat}}  </td>
 	<td> {{states.long}} </td>
 		
 	</tr>    
-</table>
+    </table>
 
 
 <div id="map"></div>
-    <div id="class" ng-repeat="marker in markers | orderBy : 'title'">
-         <a href="#" ng-click="openInfoWindow($event, marker)">{{marker.title}}</a>
-    </div>
-
-
-
+  
 </body>
 </html> 
 

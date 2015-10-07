@@ -1,4 +1,4 @@
-# AppRails <br />
+# cse5335-project-1 <br />
 a. I have selected Rails as my server framework because of the faster development process and the powerful features. <br />
 b. AngularJS is what I chose as my client framework because of its similarity to JavaScript which I am familiar with and the MVC architecture simplifies the things. <br />
 c. The reading of JSON data using AJAX was easier. ($http.get) <br />
